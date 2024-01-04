@@ -1,0 +1,54 @@
+@import "assets/styles/colors";
+@import "assets/styles/variables";
+
+.Login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: calc(100vh - #{$app-header-height});
+
+    &Icon {
+        $radius: 50px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: $radius;
+        height: $radius;
+        pointer-events: none;
+        background-color: $medium-blue;
+        border-radius: 50%;
+        padding: 10px;
+
+        svg {
+            font-size: calc(#{$radius}* 0.8);
+            color: $light-text;
+        }
+    }
+
+    &Header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: calc(10px + 2vmin);
+        color: $light-text;
+
+        p {
+            width: 100vmin;
+            word-break: break-word;
+        }
+    }
+    
+    &Form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+    }
+}

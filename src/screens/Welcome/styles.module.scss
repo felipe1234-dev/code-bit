@@ -1,0 +1,43 @@
+@import "assets/styles/colors";
+@import "assets/styles/variables";
+
+.Welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: calc(100vh - #{$app-header-height});
+
+    &Logo {
+        height: 30vmin;
+        pointer-events: none;
+    }
+
+    &Header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: calc(10px + 2vmin);
+        color: $light-text;
+
+        p {
+            width: 100vmin;
+            word-break: break-word;
+        }
+    }
+
+    &Footer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    &Link {
+        color: $medium-blue;
+    }
+}

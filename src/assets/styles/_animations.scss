@@ -1,0 +1,95 @@
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+@mixin spin-animation(
+    $iteration-count: infinite,
+    $duration: 20s,
+    $timing-function: linear,
+    $delay: 0ms
+) {
+    @include keyframes(spin) {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    animation-name: spin;
+    animation-timing-function: $timing-function;
+    animation-iteration-count: $iteration-count;
+    animation-duration: $duration;
+    animation-delay: $delay;
+}
+
+@mixin shake-animation(
+    $iteration-count: infinite,
+    $duration: 1.5s,
+    $timing-function: ease-in-out,
+    $delay: 1s
+) {
+    @include keyframes(shake) {
+        0% {
+            transform: translateX(0);
+        }
+        10% {
+            transform: translateX(-10px) rotate(5deg);
+        }
+        20% {
+            transform: translateX(10px) rotate(-5deg);
+        }
+        30% {
+            transform: translateX(-10px) rotate(5deg);
+        }
+        40% {
+            transform: translateX(10px) rotate(-5deg);
+        }
+        50%,
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    animation-name: shake;
+    animation-timing-function: $timing-function;
+    animation-iteration-count: $iteration-count;
+    animation-duration: $duration;
+    animation-delay: $delay;
+}
+
+@mixin show-animation(
+    $iteration-count: 1,
+    $duration: 400ms,
+    $timing-function: ease-in-out,
+    $delay: 0s
+) {
+    @include keyframes(show) {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 10px, 0);
+        }
+        100% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    animation-name: show;
+    animation-timing-function: $timing-function;
+    animation-iteration-count: $iteration-count;
+    animation-duration: $duration;
+    animation-delay: $delay;
+}
