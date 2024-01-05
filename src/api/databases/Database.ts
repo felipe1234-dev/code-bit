@@ -200,32 +200,16 @@ class Database<T> {
             query = query.where(field, operator, value);
         }
 
-        for (const order of this._orders) {
-            const [field, direction] = order;
-            // @ts-ignore
-            query = query.orderBy(field as string, direction);
-        }
-
-        if (this._startAfter) {
-            // @ts-ignore
-            query = query.startAfter(this._startAfter);
-        }
-
-        if (this._limit) {
-            // @ts-ignore
-            query = query.limit(this._limit);
-        }
-
         this.restartAllStates();
 
         return query.onSnapshot((snapshot) => {
-            const { docs } = snapshot;
+            const { docs = [] } = snapshot;
             const result: T[] = [];
 
-            docs.forEach((doc) => {
+            for (const doc of Array.from(docs)) {
                 const data = doc.data() as T;
                 result.push(data);
-            });
+            }
 
             listener(result);
         });
