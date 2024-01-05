@@ -1,9 +1,14 @@
 import { UsersDatabase } from "api/databases";
 import { codes } from "api/constants";
 import { Hash, auth } from "api/utils/services";
+import { validateEmail } from "api/utils/functions";
 
 async function loginUser(email: string, password: string) {
     const usersDB = new UsersDatabase();
+
+    const emailIsValid = validateEmail(email);
+    if (!emailIsValid) throw new Error(codes.auth.invalidEmail);
+    if (!password) throw new Error(codes.auth.passwordRequired);
 
     const user = await usersDB.getByEmail(email);
     if (!user) throw new Error(codes.auth.wrongEmail);
