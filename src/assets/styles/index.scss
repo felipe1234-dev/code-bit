@@ -15,11 +15,37 @@ code {
         monospace;
 }
 
+
+* {
+    /* width */
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background-color: $light-dark;
+    }
+    
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background-color: $medium-blue;
+    }
+    
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: $dark-blue;
+    }
+}
+
+.MuiButton-root {
+    text-transform: none !important;
+}
+
 .MuiButton-outlined {
     border-color: $light-text !important;
     color: $light-text !important;
-    text-transform: none !important;
-
+    
     &:hover {
         border-color: $medium-blue !important;
         color: $medium-blue !important;
@@ -41,24 +67,12 @@ code {
     }
 }
 
-* {
-    /* width */
-    &::-webkit-scrollbar {
-        width: 8px;
+.MuiTextField-root {
+    input, label {
+        color: $medium-blue !important;
     }
 
-    /* Track */
-    &::-webkit-scrollbar-track {
-        background-color: $light-dark;
-    }
-
-    /* Handle */
-    &::-webkit-scrollbar-thumb {
-        background-color: $medium-blue;
-    }
-
-    /* Handle on hover */
-    &::-webkit-scrollbar-thumb:hover {
-        background-color: $dark-blue;
+    fieldset {
+        border-color: $light-dark !important;
     }
 }
