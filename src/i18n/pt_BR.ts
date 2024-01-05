@@ -27,10 +27,13 @@ const pt_BR = {
     en_US: "English (US)",
     [codes.auth.unknownError]: "Erro desconhecido",
     [codes.auth.emailAlreadyTaken]: "Email já está em uso",
+    [codes.auth.invalidEmail]: "Email inválido",
+    [codes.auth.passwordRequired]: "Campo senha faltando",
     [codes.auth.unauthenticated]: "Não está autenticado",
     [codes.auth.unauthorized]: "Não autorizado",
     [codes.auth.wrongEmail]: "Email incorreto",
     [codes.auth.wrongPassword]: "Senha incorreta",
+    [codes.auth.wrongConfirmPassword]: "Campo confirme sua senha não é igual",
 };
 
 export default pt_BR;
