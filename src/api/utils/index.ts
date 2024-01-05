@@ -1,2 +1,2 @@
-export * as functions from "./functions";
-export * as services from "./services";
+export * from "./functions";
+export * from "./services";
