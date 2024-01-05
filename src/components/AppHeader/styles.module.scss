@@ -51,6 +51,17 @@ $padding: 10px;
         justify-content: flex-end;
     }
 
+    &UserPhoto {
+        $photo-size: 50px;
+        width: $photo-size;
+        height: $photo-size;
+        font-size: 12px;
+
+        &Button {
+            padding: 0 !important;
+        }
+    }
+
     &Languages,
     &UserMenu {
         top: $app-header-height !important;
