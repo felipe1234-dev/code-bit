@@ -1,13 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 import ParticlesBg from "particles-bg";
 
-import { AppHeader } from "components";
-import { useNavigation } from "providers";
+import { AppHeader, Spinner } from "components";
+import { useLoader, useNavigation } from "providers";
 import routes from "constants/routes";
 
 import styles from "./styles.module.scss";
 
 function App() {
+    const loader = useLoader();
     const { currentRoute } = useNavigation();
 
     return (
@@ -23,10 +24,14 @@ function App() {
                     />
                 ))}
             </Routes>
+            <Spinner
+                open={loader.visible}
+                onClose={loader.hide}
+            />
             <ParticlesBg
                 bg
                 color="#5f687b"
-                num={20}
+                num={30}
                 type="cobweb"
             />
         </div>
