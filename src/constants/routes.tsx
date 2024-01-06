@@ -1,4 +1,4 @@
-import { Home, Login, Register } from "screens";
+import { Challenges, Home, Login, Register } from "screens";
 import { Protected } from "components/Protected";
 
 const routes = [
@@ -26,6 +26,13 @@ const routes = [
         hideHeader: false,
         path: "/register",
         element: <Register />,
+    },
+    {
+        key: "challenges",
+        index: false,
+        hideHeader: false,
+        path: "/challenges",
+        element: <Challenges />,
     },
 ];
 
