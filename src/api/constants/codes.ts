@@ -17,6 +17,20 @@ const codes = {
     user: {
         notFound: "USER_NOT_FOUND" as const,
     },
+    challenge: {
+        notFound: "CHALLENGE_NOT_FOUND" as const,
+        missingTitle: "MISSING_TITLE" as const,
+        missingDescription: "MISSING_DESCRIPTION" as const,
+        missingCategories: "MISSING_CATEGORIES" as const,
+        missingTests: "MISSING_TESTS" as const,
+        missingCode: "MISSING_CODE" as const,
+    },
+    solution: {
+        notFound: "SOLUTION_NOT_FOUND" as const,
+        notSolved: "SOLUTION_NOT_SOLVED" as const,
+        missingChallenge: "MISSING_CHALLENGE" as const,
+        missingCode: "MISSING_CODE" as const,
+    },
 };
 
 export default codes;
