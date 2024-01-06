@@ -224,6 +224,11 @@ class Database<T> {
         const results = await this.get();
         return results[results.length - 1];
     }
+
+    public async exists(): Promise<boolean> {
+        const first = await this.getFirst();
+        return !!first;
+    }
 }
 
 export default Database;
