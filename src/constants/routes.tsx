@@ -1,4 +1,4 @@
-import { Challenges, Home, Login, Register } from "screens";
+import { ChallengeEditor, Challenges, Home, Login, Register } from "screens";
 import { Protected } from "components/Protected";
 
 const routes = [
@@ -33,6 +33,17 @@ const routes = [
         hideHeader: false,
         path: "/challenges",
         element: <Challenges />,
+    },
+    {
+        key: "editor",
+        index: false,
+        hideHeader: true,
+        path: "/editor",
+        element: (
+            <Protected>
+                <ChallengeEditor />
+            </Protected>
+        ),
     },
 ];
 
