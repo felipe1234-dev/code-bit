@@ -19,17 +19,17 @@ const codes = {
     },
     challenge: {
         notFound: "CHALLENGE_NOT_FOUND" as const,
-        missingTitle: "MISSING_TITLE" as const,
-        missingDescription: "MISSING_DESCRIPTION" as const,
-        missingCategories: "MISSING_CATEGORIES" as const,
-        missingTests: "MISSING_TESTS" as const,
-        missingCode: "MISSING_CODE" as const,
+        missingTitle: "CHALLENGE_MISSING_TITLE" as const,
+        missingDescription: "CHALLENGE_MISSING_DESCRIPTION" as const,
+        missingCategories: "CHALLENGE_MISSING_CATEGORIES" as const,
+        missingTests: "CHALLENGE_MISSING_TESTS" as const,
+        missingCode: "CHALLENGE_MISSING_CODE" as const,
     },
     solution: {
         notFound: "SOLUTION_NOT_FOUND" as const,
         notSolved: "SOLUTION_NOT_SOLVED" as const,
-        missingChallenge: "MISSING_CHALLENGE" as const,
-        missingCode: "MISSING_CODE" as const,
+        missingChallenge: "SOLUTION_MISSING_CHALLENGE" as const,
+        missingCode: "SOLUTION_MISSING_CODE" as const,
     },
 };
 

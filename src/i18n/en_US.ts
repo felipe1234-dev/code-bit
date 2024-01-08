@@ -40,6 +40,7 @@ const en_US = {
     "Conta criada com sucesso": "Account created successfully",
     "Seu perfil": "Your profile",
     "Sair da conta": "Logout",
+    Criar: "Create",
     [codes.auth.unknownError]: "Unknown error",
     [codes.auth.emailAlreadyTaken]: "Email already taken",
     [codes.auth.unauthenticated]: "Unauthenticated",
@@ -49,6 +50,18 @@ const en_US = {
     [codes.auth.wrongPassword]: "Wrong password",
     [codes.auth.passwordRequired]: "Password is required",
     [codes.auth.wrongConfirmPassword]: "Confirm password field doesn't match",
+    [codes.challenge.missingTitle]: "A title is mandatory for your challenge!",
+    [codes.challenge.missingDescription]:
+        "A challenge needs a description so users know what to do!",
+    [codes.challenge.missingCategories]:
+        "Add categories for users to search for your challenge",
+    [codes.challenge.missingTests]:
+        "Add at least 1 test to evaluate user solutions",
+    [codes.challenge.missingCode]:
+        "Add a base code for the user to know the parameters and function name",
+    [codes.challenge.notFound]: "Challenge not found",
+    [codes.solution.notFound]: "Solution not found",
+    [codes.solution.notSolved]: "Oops, this solution didn't work",
 };
 
 export default en_US;
