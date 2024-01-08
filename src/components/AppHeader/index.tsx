@@ -92,6 +92,15 @@ function AppHeader() {
                 </a>
             </div>
             <div className={styles.AppHeaderRight}>
+                {user?.uid && (
+                    <Button
+                        variant="outlined"
+                        onClick={() => navigate("/editor")}
+                    >
+                        {translate("Criar")}
+                    </Button>
+                )}
+
                 <IconButton onClick={handleOpenLangOptions}>
                     <TranslateIcon />
                 </IconButton>
