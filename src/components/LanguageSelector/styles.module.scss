@@ -1,0 +1,21 @@
+@import "assets/styles/variables";
+
+.LanguageSelector {
+    &Menu {
+        top: $app-header-height !important;
+    }
+
+    &Option {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+
+        img {
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+        }
+    }
+}

@@ -1,0 +1,24 @@
+@import "assets/styles/colors";
+@import "assets/styles/variables";
+
+$avatar-radius: 38px;
+
+.UserAvatar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    border-radius: 15px !important;
+    border-top-left-radius: 50% !important;
+    border-bottom-left-radius: 50% !important;
+    background-color: $dark-dark !important;
+    color: $light-text !important;
+    padding: 1px 10px 1px 1px !important;
+    font-size: 14px !important;
+
+    &Photo {
+        width: $avatar-radius !important;
+        height: $avatar-radius !important;
+    }
+}
