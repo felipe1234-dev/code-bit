@@ -10,11 +10,6 @@
     width: 100%;
     height: calc(100vh - #{$app-header-height});
 
-    &Logo {
-        height: 30vmin;
-        pointer-events: none;
-    }
-
     &Header {
         display: flex;
         flex-direction: column;
@@ -22,6 +17,11 @@
         justify-content: center;
         font-size: calc(10px + 2vmin);
         color: $light-text;
+
+        h1 {
+            color: $medium-blue;
+            margin: 0;
+        }
 
         p {
             width: 100vmin;

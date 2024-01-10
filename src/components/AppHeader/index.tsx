@@ -1,5 +1,7 @@
-import { Button } from "@mui/material";
+import { Button, InputAdornment, TextField } from "@mui/material";
+import { Search as SearchIcon } from "@mui/icons-material";
 
+import { appName } from "constants/app";
 import { useAuth, useI18n, useNavigation } from "providers";
 import logo from "assets/images/logo.svg";
 
@@ -27,17 +29,37 @@ function AppHeader() {
     return (
         <header className={styles.AppHeader}>
             <div className={styles.AppHeaderLeft}>
-                {user?.uid && (
-                    <div
-                        className={styles.AppHeaderLogo}
-                        onClick={() => navigate("/")}
-                    >
-                        <img
-                            src={logo}
-                            alt={translate("Logo")}
-                        />
-                    </div>
-                )}
+                <div
+                    className={styles.AppHeaderLogo}
+                    onClick={() => navigate("/")}
+                >
+                    <img
+                        src={logo}
+                        alt={translate("Logo")}
+                    />
+                </div>
+                <span
+                    className={styles.AppHeaderName}
+                    onClick={() => navigate("/")}
+                >
+                    {appName}
+                </span>
+                <TextField
+                    className={styles.AppHeaderSearch}
+                    variant="filled"
+                    placeholder={translate("Pesquisa rápida")}
+                    InputProps={{
+                        className: styles.AppHeaderSearchInput,
+                        startAdornment: (
+                            <InputAdornment
+                                className={styles.AppHeaderSearchIcon}
+                                position="start"
+                            >
+                                <SearchIcon />
+                            </InputAdornment>
+                        ),
+                    }}
+                />
             </div>
             <div className={styles.AppHeaderRight}>
                 {user?.uid && currentRoute?.key !== "editor" && (

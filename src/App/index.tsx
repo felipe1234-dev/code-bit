@@ -28,12 +28,14 @@ function App() {
                 open={loader.visible}
                 onClose={loader.hide}
             />
-            <ParticlesBg
-                bg
-                color="#5f687b"
-                num={30}
-                type="cobweb"
-            />
+            {currentRoute?.showParticlesBg && (
+                <ParticlesBg
+                    bg
+                    color="#5f687b"
+                    num={30}
+                    type="cobweb"
+                />
+            )}
         </div>
     );
 }

@@ -1,6 +1,8 @@
 import { Button } from "@mui/material";
+
+import { appName } from "constants/app";
 import { useI18n, useNavigation } from "providers";
-import logo from "assets/images/logo.svg";
+
 import styles from "./styles.module.scss";
 
 function Welcome() {
@@ -10,11 +12,7 @@ function Welcome() {
     return (
         <div className={styles.Welcome}>
             <div className={styles.WelcomeHeader}>
-                <img
-                    className={styles.WelcomeLogo}
-                    src={logo}
-                    alt="logo"
-                />
+                <h1>{appName}</h1>
                 <p>
                     {translate(
                         "Desafie sua mente, ganhe XP e domine a arte da programação enquanto se diverte!"

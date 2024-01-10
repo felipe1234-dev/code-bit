@@ -9,6 +9,7 @@ $padding: 10px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    background-color: $medium-dark;
     position: sticky;
     top: 0;
     left: 0;
@@ -45,6 +46,40 @@ $padding: 10px;
         }
     }
 
+    &Name {
+        font-weight: bold;
+        cursor: pointer;
+        color: $medium-blue;
+    }
+
+    &Search {
+        margin-left: 8px !important;
+        flex: 1;
+
+        &Input {
+            background-color: $light-dark !important;
+            border-radius: 30px !important;
+
+            &::before,
+            &::after {
+                display: none !important;
+            }
+
+            input {
+                color: $light-text !important;
+                padding-top: 10px !important;
+                padding-left: 0 !important;
+                padding-right: 15px !important;
+                padding-bottom: 10px !important;
+            }
+        }
+
+        &Icon {
+            margin-top: 0 !important;
+            color: $light-text !important;
+        }
+    }
+
     &Left,
     &Right {
         display: flex;
@@ -78,30 +113,5 @@ $padding: 10px;
 
     &Right {
         justify-content: flex-end;
-    }
-
-    &Languages,
-    &UserMenu {
-        top: $app-header-height !important;
-    }
-
-    &Search {
-        *::before {
-            display: none;
-        }
-    }
-
-    &Option {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 8px;
-
-        img {
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-        }
     }
 }
