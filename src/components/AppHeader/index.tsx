@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Button, InputAdornment, TextField } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
 
@@ -10,21 +11,24 @@ import UserAvatar from "components/UserAvatar";
 
 import styles from "./styles.module.scss";
 
-const menuProps = {
-    anchorOrigin: {
-        vertical: "bottom" as "bottom",
-        horizontal: "left" as "left",
-    },
-    transformOrigin: {
-        vertical: "top" as "top",
-        horizontal: "left" as "left",
-    },
-};
-
 function AppHeader() {
+    const [searchEl, setSearchEl] = useState<HTMLDivElement | null>(null);
     const { user } = useAuth();
     const { translate } = useI18n();
     const { navigate, currentRoute } = useNavigation();
+
+    useEffect(() => {
+        if (!searchEl) return;
+
+        const input = searchEl.querySelector("input");
+        if (!input) return;
+
+        window.addEventListener("keydown", (evt) => {
+            if (evt.ctrlKey && evt.key === "/") {
+                input.focus();
+            }
+        });
+    }, [searchEl]);
 
     return (
         <header className={styles.AppHeader}>
@@ -45,9 +49,10 @@ function AppHeader() {
                     {appName}
                 </span>
                 <TextField
+                    ref={setSearchEl}
                     className={styles.AppHeaderSearch}
                     variant="filled"
-                    placeholder={translate("Pesquisa rápida")}
+                    placeholder={translate("Pesquisa rápida (Ctrl + /)")}
                     InputProps={{
                         className: styles.AppHeaderSearchInput,
                         startAdornment: (
