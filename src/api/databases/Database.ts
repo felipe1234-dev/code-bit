@@ -129,8 +129,12 @@ class Database<T> {
     public async get() {
         if (this._uid) {
             const uid = this._uid;
+            const doc = await this._collection.doc(uid).get();
+            const data = doc.data();
+
             this.restartAllStates();
-            return [(await this._collection.doc(uid).get()).data() as T];
+
+            return [data as T].filter(Boolean);
         }
 
         const results = [];
