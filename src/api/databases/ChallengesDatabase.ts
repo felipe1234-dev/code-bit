@@ -3,7 +3,7 @@ import { Challenge } from "../models";
 
 class ChallengesDatabase extends Database<Challenge> {
     constructor() {
-        super("users");
+        super("challenges");
     }
 
     public override async get() {
@@ -11,10 +11,10 @@ class ChallengesDatabase extends Database<Challenge> {
         return results.map((data) => new Challenge(data));
     }
 
-    public override watch(listener: (users: Challenge[]) => void) {
+    public override watch(listener: (challenges: Challenge[]) => void) {
         return super.watch((list) => {
-            const users = list.map((data) => new Challenge(data));
-            listener(users);
+            const challenges = list.map((data) => new Challenge(data));
+            listener(challenges);
         });
     }
 

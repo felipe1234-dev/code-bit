@@ -3,7 +3,7 @@ import { Rating } from "../models";
 
 class RatingsDatabase extends Database<Rating> {
     constructor() {
-        super("users");
+        super("ratings");
     }
 
     public override async get() {
@@ -11,10 +11,10 @@ class RatingsDatabase extends Database<Rating> {
         return results.map((data) => new Rating(data));
     }
 
-    public override watch(listener: (users: Rating[]) => void) {
+    public override watch(listener: (ratings: Rating[]) => void) {
         return super.watch((list) => {
-            const users = list.map((data) => new Rating(data));
-            listener(users);
+            const ratings = list.map((data) => new Rating(data));
+            listener(ratings);
         });
     }
 }

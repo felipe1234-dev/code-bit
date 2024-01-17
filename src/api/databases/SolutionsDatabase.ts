@@ -3,7 +3,7 @@ import { Solution } from "../models";
 
 class SolutionsDatabase extends Database<Solution> {
     constructor() {
-        super("users");
+        super("solutions");
     }
 
     public override async get() {
@@ -11,10 +11,10 @@ class SolutionsDatabase extends Database<Solution> {
         return results.map((data) => new Solution(data));
     }
 
-    public override watch(listener: (users: Solution[]) => void) {
+    public override watch(listener: (solutions: Solution[]) => void) {
         return super.watch((list) => {
-            const users = list.map((data) => new Solution(data));
-            listener(users);
+            const solutions = list.map((data) => new Solution(data));
+            listener(solutions);
         });
     }
 }
