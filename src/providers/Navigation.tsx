@@ -3,7 +3,6 @@ import {
     useLocation,
     Location,
     useNavigate,
-    useParams,
     NavigateFunction,
 } from "react-router-dom";
 
