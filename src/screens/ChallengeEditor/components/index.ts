@@ -1,2 +1,3 @@
-export * from "./Header";
-export * from "./Panels";
+export * from "./Instructions";
+export * from "./Code";
+export * from "./Tests";

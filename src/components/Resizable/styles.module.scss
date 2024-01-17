@@ -1,15 +1,35 @@
+@import "assets/styles/colors";
+
 .Resizable {
     &Handle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $dark-dark;
+
+        svg {
+            font-size: 10px;
+        }
+
         &[data-axis="x"] {
             position: absolute;
             right: 0;
             top: 0;
-            cursor: col-resize;
             height: 100%;
             width: 10px;
+            cursor: col-resize;
+
+            svg {
+                transform: rotate(90deg);
+            }
         }
 
         &[data-axis="y"] {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 10px;
             cursor: row-resize;
         }
     }

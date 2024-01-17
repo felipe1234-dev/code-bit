@@ -1,12 +1,46 @@
 @import "assets/styles/colors";
 
+$border-radius: 15px;
+$light-gray: #3f3f3f;
+$dark-gray: #2b2b2b;
+$spacing: 35px;
+
 .TextEditor {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     position: relative;
-    background-color: $white;
-    color: $dark-text;
     height: 100%;
-    width: 100%;
+    width: calc(100% - 2 * 10px);
     border-color: transparent;
+    padding: 0;
+    background: none !important;
+    border-radius: $border-radius;
+
+    &[data-theme="dark"] {
+        background-color: $dark-gray !important;
+        color: $light-text;
+
+        blockquote {
+            $radius: 5px;
+            border-left: 5px solid $dark-blue;
+            color: $white;
+            font-family: Hoefler Text, Georgia, serif;
+            font-style: italic;
+            margin: 16px 0;
+            padding: 10px 20px;
+            width: fit-content;
+            border-top-right-radius: $radius;
+            border-bottom-right-radius: $radius;
+            background-color: #4d4c4c;
+        }
+    }
+
+    &[data-theme="light"] {
+        background-color: $white;
+        color: $dark-text;
+    }
 
     &Toolbar {
         display: flex;
@@ -14,12 +48,51 @@
         align-items: center;
         justify-content: flex-start;
         flex-wrap: wrap;
-        width: 100%;
-        min-height: 40px;
-        background-color: $medium-gray;
-        border-bottom: 1px solid $dark-gray;
-        border-top: 1px solid $dark-gray;
+        background-color: transparent;
+        border: none;
+        padding: $spacing $spacing 0 $spacing;
         margin: 0;
-        padding: 10px 10px 5px 10px;
+        min-height: 40px;
+        width: 100%;
+
+        button {
+            background: none;
+            background-color: $dark-gray;
+            color: $light-text !important;
+            font-size: 20px;
+            margin: 0;
+            padding: 5px;
+            max-height: fit-content;
+            height: fit-content;
+
+            border: none;
+            outline: none;
+
+            span {
+                filter: invert(0.8);
+            }
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+            &[aria-checked="true"] {
+                background-color: $dark-blue;
+                border-radius: 5px;
+
+                span {
+                    filter: invert(1);
+                }
+            }
+        }
+    }
+
+    &Container {
+        background-color: $light-gray;
+        border-radius: $border-radius;
+        padding: 10px;
+        margin: $spacing;
+        height: 100%;
+        width: calc(100% - 2 *#{$spacing});
     }
 }

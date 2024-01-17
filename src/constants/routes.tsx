@@ -42,8 +42,8 @@ const routes = [
         key: "editor",
         index: false,
         hideHeader: false,
-        showParticlesBg: false,
-        path: "/editor",
+        showParticlesBg: true,
+        path: "/editor/:draftUid?",
         element: (
             <Protected>
                 <ChallengeEditor />

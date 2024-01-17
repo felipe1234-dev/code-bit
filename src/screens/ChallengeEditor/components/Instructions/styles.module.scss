@@ -1,0 +1,39 @@
+@import "assets/styles/colors";
+
+.Instructions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+
+    &Title,
+    &Categories {
+        &::before,
+        &::after,
+        > div::before,
+        > div::after {
+            display: none !important;
+        }
+
+        input {
+            color: $medium-blue !important;
+            padding: 15px 10px !important;
+        }
+    }
+
+    &Title {
+        input {
+            font-size: 32px;
+        }
+    }
+
+    &Categories {
+        input {
+            font-size: 18px;
+        }
+    }
+}

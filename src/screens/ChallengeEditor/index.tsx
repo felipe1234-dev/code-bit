@@ -1,10 +1,11 @@
-import { EditorProvider } from "./contexts/";
+import { TabsProvider, EditorProvider } from "./contexts/";
+import { Composer } from "components";
 import Root from "./Root";
 
 const ChallengeEditor = () => (
-    <EditorProvider>
+    <Composer components={[TabsProvider, EditorProvider]}>
         <Root />
-    </EditorProvider>
+    </Composer>
 );
 
 export default ChallengeEditor;

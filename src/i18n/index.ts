@@ -102,11 +102,11 @@ const i18n = (key: string, replaceMatrix?: ReplaceMatrix): string => {
         !(replaceMatrix instanceof Array) &&
         typeof message === "string"
     ) {
-        for (let i in replaceMatrix) {
-            if (!replaceMatrix.hasOwnProperty(i)) continue;
+        for (let k in replaceMatrix) {
+            if (!replaceMatrix.hasOwnProperty(k)) continue;
             message = message.replace(
-                new RegExp("" + i, "g"),
-                String(replaceMatrix[i])
+                new RegExp("@" + k, "g"),
+                String(replaceMatrix[k])
             );
         }
     }

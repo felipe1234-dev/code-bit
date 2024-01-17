@@ -1,8 +1,13 @@
-import React, { createContext, useContext, useState } from "react";
-import { Challenge } from "api/models";
+import React, { createContext, useContext, useEffect, useState } from "react";
+
+import * as Api from "api";
+import { Challenge, Draft } from "api/models";
+import { useI18n, useNavigation } from "providers";
+import { useAsyncEffect } from "hooks";
 
 interface EditorValue {
     challenge: Challenge;
+    draft: Draft | undefined;
     updateChallenge: (updates: Partial<Challenge>) => void;
     handleUpdateChallenge: (
         prop: keyof Challenge
@@ -12,7 +17,20 @@ interface EditorValue {
 const EditorContext = createContext<EditorValue | undefined>(undefined);
 
 function EditorProvider(props: { children: React.ReactNode }) {
-    const [challenge, setChallenge] = useState(new Challenge());
+    const { translate } = useI18n();
+    const { params } = useNavigation();
+
+    const [challenge, setChallenge] = useState(
+        new Challenge({
+            description: `<p><i>${translate(
+                "Digite aqui as instruções do desafio"
+            )}</i></p>`,
+            code: `function helloWorld() {
+    // ${translate("Escreva aqui o código base")}
+}`,
+        })
+    );
+    const [draft, setDraft] = useState<Draft | undefined>(undefined);
 
     const updateChallenge = (updates: Partial<Challenge>) => {
         setChallenge((prev) => {
@@ -26,10 +44,24 @@ function EditorProvider(props: { children: React.ReactNode }) {
             updateChallenge({ [prop]: evt.target.value });
         };
 
+    useAsyncEffect(async () => {
+        const { draftUid } = params;
+        if (!draftUid) return;
+
+        const draft = await Api.cases.drafts.getDraftByUid(draftUid);
+        setDraft(draft);
+    }, [params]);
+
+    useEffect(() => {
+        if (!draft) return;
+        setChallenge(new Challenge(draft));
+    }, [draft]);
+
     return (
         <EditorContext.Provider
             value={{
                 challenge,
+                draft,
                 updateChallenge,
                 handleUpdateChallenge,
             }}

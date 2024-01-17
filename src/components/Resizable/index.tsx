@@ -1,3 +1,4 @@
+import {DragHandleOutlined as HandleIcon } from '@mui/icons-material';
 import { Resizable as ReactResizable, ResizableProps } from "react-resizable";
 import styles from "./styles.module.scss";
 
@@ -14,7 +15,9 @@ function Resizable(props: ResizableProps) {
                 <div
                     className={styles.ResizableHandle}
                     data-axis={axis}
-                />
+                >
+                    <HandleIcon />
+                </div>
             }
         />
     );
