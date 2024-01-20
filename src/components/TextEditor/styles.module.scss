@@ -19,7 +19,7 @@ $spacing: 35px;
     border-radius: $border-radius;
 
     &[data-theme="dark"] {
-        background-color: $dark-gray !important;
+        background-color: transparent !important;
         color: $light-text;
 
         blockquote {
@@ -34,6 +34,16 @@ $spacing: 35px;
             border-top-right-radius: $radius;
             border-bottom-right-radius: $radius;
             background-color: #4d4c4c;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: $medium-blue;
+            font-weight: 500;
         }
     }
 
@@ -50,10 +60,12 @@ $spacing: 35px;
         flex-wrap: wrap;
         background-color: transparent;
         border: none;
-        padding: $spacing $spacing 0 $spacing;
+        padding: 0;
         margin: 0;
         min-height: 40px;
         width: 100%;
+        margin-bottom: 10px;
+        margin-left: 10px;
 
         button {
             background: none;
@@ -88,11 +100,10 @@ $spacing: 35px;
     }
 
     &Container {
-        background-color: $light-gray;
-        border-radius: $border-radius;
-        padding: 10px;
-        margin: $spacing;
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
         height: 100%;
-        width: calc(100% - 2 *#{$spacing});
+        width: 100%;
     }
 }

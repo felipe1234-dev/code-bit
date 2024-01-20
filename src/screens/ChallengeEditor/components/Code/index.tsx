@@ -1,4 +1,4 @@
-import { useEditor } from "../../contexts";
+import { useEditor } from "../../providers";
 import { CodeEditor } from "components";
 import styles from "./styles.module.scss";
 

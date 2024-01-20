@@ -8,6 +8,8 @@ import { useAsyncEffect } from "hooks";
 interface EditorValue {
     challenge: Challenge;
     draft: Draft | undefined;
+    categories: string[];
+    setCategories: React.Dispatch<React.SetStateAction<string[]>>;
     updateChallenge: (updates: Partial<Challenge>) => void;
     handleUpdateChallenge: (
         prop: keyof Challenge
@@ -31,6 +33,7 @@ function EditorProvider(props: { children: React.ReactNode }) {
         })
     );
     const [draft, setDraft] = useState<Draft | undefined>(undefined);
+    const [categories, setCategories] = useState<string[]>([]);
 
     const updateChallenge = (updates: Partial<Challenge>) => {
         setChallenge((prev) => {
@@ -57,11 +60,18 @@ function EditorProvider(props: { children: React.ReactNode }) {
         setChallenge(new Challenge(draft));
     }, [draft]);
 
+    useAsyncEffect(async () => {
+        const categories = await Api.cases.challenges.listCategories();
+        setCategories(categories);
+    }, []);
+
     return (
         <EditorContext.Provider
             value={{
                 challenge,
                 draft,
+                categories,
+                setCategories,
                 updateChallenge,
                 handleUpdateChallenge,
             }}

@@ -1,3 +1,5 @@
+@import "assets/styles/colors";
+
 $editor-header-height: 60px;
-$editor-width: 70%;
-$editor-min-width: 400px;
+$editor-header-color: darken($medium-dark, 4%);
+$instructions-bg-color: darken($light-dark, 8%);

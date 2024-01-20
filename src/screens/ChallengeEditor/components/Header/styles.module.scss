@@ -1,0 +1,52 @@
+@import "assets/styles/colors";
+@import "../../styles/variables";
+
+.Header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: $editor-header-height;
+    background-color: $editor-header-color;
+
+    &Left,
+    &Right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+    }
+
+    &Left {
+        padding-left: 10px;
+        justify-content: flex-start;
+    }
+
+    &Right {
+        padding-right: 10px;
+        justify-content: flex-end;
+    }
+
+    &LastSavedAt {
+        color: $light-text;
+        font-style: italic;
+        font-size: 12px;
+    }
+
+    &Title {
+        &::before,
+        &::after,
+        > div::before,
+        > div::after {
+            display: none !important;
+        }
+
+        input {
+            color: $medium-blue !important;
+            padding: 15px 10px !important;
+            font-size: 18px;
+            font-weight: 400;
+        }
+    }
+}

@@ -6,58 +6,28 @@
 .Editor {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0;
     text-align: left;
     width: 100%;
     height: calc(100vh - #{$app-header-height});
     position: relative;
     overflow: hidden;
 
-    &Header {
+    &Panels {
         display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 8px;
-        flex-wrap: wrap;
-        width: $editor-width;
-        min-width: $editor-min-width;
-
-        &Right {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 8px;
-        }
-    }
-
-    &Tabs {
-        &Tab {
-            color: $light-text !important;
-            text-transform: none !important;
-
-            &[aria-selected="true"] {
-                color: $medium-blue !important;
-            }
-        }
-
-        &Indicator {
-            background-color: $medium-blue !important;
-        }
-    }
-
-    &Content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         justify-content: flex-start;
-        gap: 8px;
-        width: $editor-width;
-        min-width: $editor-min-width;
-        height: 80%;
+        flex-direction: row;
+        gap: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &Panel {
+        position: relative;
+        height: calc(100% - #{$app-header-height});
 
         > * {
             @include show-animation;

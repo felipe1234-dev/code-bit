@@ -53,9 +53,13 @@ const en_US = {
     Categorias: "Categories",
     "Escreva aqui o código base": "Type here the base code",
     "Desafio salvo com sucesso!": "Challenge saved successfully!",
-    "É necessário informar o nome da função": "It is needed to inform the function name",
+    "É necessário informar o nome da função":
+        "It is needed to inform the function name",
     "Código contém erros": "Code contains errors",
-    "\"@nome\" precisa ser uma função": "\"@nome\" must be a function",
+    '"@nome" precisa ser uma função': '"@nome" must be a function',
+    "Nenhuma opção": "No options",
+    "Coloque os testes aqui. Ex: soma(1, 1) === 2":
+        "Put the tests here. E.g. sum(1, 1) === 2",
     [codes.auth.unknownError]: "Unknown error",
     [codes.auth.emailAlreadyTaken]: "Email already taken",
     [codes.auth.unauthenticated]: "Unauthenticated",
