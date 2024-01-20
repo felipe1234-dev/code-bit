@@ -18,6 +18,23 @@ class ChallengesDatabase extends Database<Challenge> {
         });
     }
 
+    public override async create(data: Challenge) {
+        const newCategories = [...data.categories];
+        const challengesDb = new Database("challenges");
+        // @ts-ignore
+        const oldCategoriesDoc: { list: string[] } = await challengesDb
+            .uid("--categories")
+            .getFirst();
+
+        await challengesDb.uid("--categories").update({
+            categories: Array.from(
+                new Set([...newCategories, ...oldCategoriesDoc.list])
+            ),
+        });
+
+        return super.create(data);
+    }
+
     public async getLastIncremental() {
         this.orderBy("incremental", "desc");
         this.limit(1);
@@ -31,6 +48,16 @@ class ChallengesDatabase extends Database<Challenge> {
     public getByIncremental(incremental: number) {
         this.where("incremental", "==", incremental);
         return this.getFirst();
+    }
+
+    public async getCategories() {
+        const challengesDb = new Database("challenges");
+        // @ts-ignore
+        const categoriesDoc: { list: string[] } = await challengesDb
+            .uid("--categories")
+            .getFirst();
+
+        return categoriesDoc.list;
     }
 }
 
