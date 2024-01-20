@@ -7,6 +7,7 @@ import {
     I18nProvider,
     NavigationProvider,
     ToastProvider,
+    ModalProvider,
     LoaderProvider,
     AuthProvider,
 } from "providers";
@@ -24,6 +25,7 @@ const providers = [
     I18nProvider,
     NavigationProvider,
     ToastProvider,
+    ModalProvider,
     LoaderProvider,
     AuthProvider,
 ];

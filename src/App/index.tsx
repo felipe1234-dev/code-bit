@@ -1,15 +1,16 @@
 import { Routes, Route } from "react-router-dom";
 import ParticlesBg from "particles-bg";
 
-import { AppHeader, Spinner } from "components";
-import { useLoader, useNavigation } from "providers";
+import { AppHeader, Spinner, Modal } from "components";
+import { useLoader, useNavigation, useModal } from "providers";
 import routes from "constants/routes";
 
 import styles from "./styles.module.scss";
 
 function App() {
-    const loader = useLoader();
     const { currentRoute } = useNavigation();
+    const { modalProps } = useModal();
+    const loader = useLoader();
 
     return (
         <div className={styles.App}>
@@ -28,6 +29,7 @@ function App() {
                 open={loader.visible}
                 onClose={loader.hide}
             />
+            <Modal {...modalProps} />
             {currentRoute?.showParticlesBg && (
                 <ParticlesBg
                     bg
