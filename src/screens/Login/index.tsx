@@ -57,7 +57,7 @@ function Login() {
                         value={password}
                     />
                     <Button fullWidth onClick={handleLogin}>
-                        {translate("Login")}
+                        {translate("Entrar")}
                     </Button>
                 </div>
             </div>
