@@ -31,7 +31,10 @@ function AppHeader() {
     }, [searchEl]);
 
     return (
-        <header className={styles.AppHeader}>
+        <header
+            className={styles.AppHeader}
+            data-shadow={!currentRoute?.hideHeaderShadow}
+        >
             <div className={styles.AppHeaderLeft}>
                 <div
                     className={styles.AppHeaderLogo}

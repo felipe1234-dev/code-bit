@@ -17,6 +17,11 @@ $padding: 10px;
     height: fit-content;
     max-height: calc(#{$app-header-height} - 2 *#{$padding});
     padding: $padding;
+    z-index: 10;
+
+    &[data-shadow="true"] {
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    }
 
     &,
     * {

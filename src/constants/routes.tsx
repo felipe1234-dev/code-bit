@@ -7,6 +7,7 @@ const routes = [
         index: true,
         hideHeader: false,
         showParticlesBg: true,
+        hideHeaderShadow: true,
         path: "/",
         element: (
             <Protected>
@@ -19,6 +20,7 @@ const routes = [
         index: false,
         hideHeader: false,
         showParticlesBg: true,
+        hideHeaderShadow: true,
         path: "/login",
         element: <Login />,
     },
@@ -27,6 +29,7 @@ const routes = [
         index: false,
         hideHeader: false,
         showParticlesBg: true,
+        hideHeaderShadow: true,
         path: "/register",
         element: <Register />,
     },
@@ -35,6 +38,7 @@ const routes = [
         index: false,
         hideHeader: false,
         showParticlesBg: false,
+        hideHeaderShadow: true,
         path: "/challenges",
         element: <Challenges />,
     },
@@ -43,6 +47,7 @@ const routes = [
         index: false,
         hideHeader: false,
         showParticlesBg: true,
+        hideHeaderShadow: false,
         path: "/editor/:draftUid?",
         element: (
             <Protected>
