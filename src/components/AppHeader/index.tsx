@@ -97,7 +97,7 @@ function AppHeader() {
                         </Button>
                     </>
                 ) : (
-                    <UserAvatar />
+                    <UserAvatar user={user} />
                 )}
             </div>
         </header>
