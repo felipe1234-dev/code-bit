@@ -29,6 +29,8 @@ function EditorProvider(props: { children: React.ReactNode }) {
             )}</i></p>`,
             code: `function helloWorld() {
     // ${translate("Escreva aqui o código base")}
+    // ${translate("Dê um nome à função e provenha os argumentos")}
+    // ${translate("Não escreva a solução do desafio aqui")}
 }`,
         })
     );

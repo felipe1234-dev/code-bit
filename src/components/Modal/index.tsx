@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react";
+import { createPortal } from "react-dom";
 import {
     Button,
     Dialog,
@@ -37,10 +38,19 @@ interface ModalProps {
     buttons?: ButtonProps[];
     hide?: () => void;
     variant?: "success" | "error" | "warning" | "info";
+    parentElement?: Element | DocumentFragment;
 }
 
 function Modal(props: ModalProps) {
-    const { visible, title, description, buttons = [], hide, variant } = props;
+    const {
+        parentElement,
+        visible,
+        title,
+        description,
+        buttons = [],
+        hide,
+        variant,
+    } = props;
     const { translate } = useI18n();
     const modal = useModal();
 
@@ -52,7 +62,7 @@ function Modal(props: ModalProps) {
         }
     };
 
-    return (
+    const modalEl = (
         <Dialog
             keepMounted
             open={visible}
@@ -63,7 +73,7 @@ function Modal(props: ModalProps) {
                 "data-variant": variant,
             }}
             sx={{
-                zIndex: 9999,
+                zIndex: 20,
             }}
         >
             {title && (
@@ -73,11 +83,15 @@ function Modal(props: ModalProps) {
             )}
             <DialogContent>
                 {description && (
-                    <DialogContentText>
-                        {typeof description === "string"
-                            ? translate(description)
-                            : description}
-                    </DialogContentText>
+                    <>
+                        {typeof description === "string" ? (
+                            <DialogContentText>
+                                {translate(description)}
+                            </DialogContentText>
+                        ) : (
+                            description
+                        )}
+                    </>
                 )}
             </DialogContent>
             <DialogActions>
@@ -87,6 +101,8 @@ function Modal(props: ModalProps) {
             </DialogActions>
         </Dialog>
     );
+
+    return parentElement ? createPortal(modalEl, parentElement) : modalEl;
 }
 
 export default Modal;

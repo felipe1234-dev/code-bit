@@ -102,6 +102,7 @@ function Instructions() {
             <hr />
 
             <TextEditor
+                key={challenge.uid}
                 theme="dark"
                 onChange={handleUpdateDescription}
                 value={challenge.description}

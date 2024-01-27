@@ -18,16 +18,22 @@ const menuProps = {
     },
 };
 
-function UserAvatar() {
+interface UserAvatarProps {
+    user: User;
+}
+
+function UserAvatar(props: UserAvatarProps) {
+    const { user } = props;
+    const { user: authUser, logout } = useAuth();
+    const { translate } = useI18n();
+    const { navigate } = useNavigation();
+    const loader = useLoader();
+
     const [userAnchorEl, setUserAnchorEl] = useState<HTMLButtonElement | null>(
         null
     );
 
-    const { user, logout } = useAuth();
-    const { translate, ...i18n } = useI18n();
-    const { navigate } = useNavigation();
-    const loader = useLoader();
-
+    const isAuthUser = user.uid === authUser?.uid;
     const userMenuOpen = Boolean(userAnchorEl);
 
     const handleOpenUserMenu = (evt: React.MouseEvent<HTMLButtonElement>) => {
@@ -50,7 +56,7 @@ function UserAvatar() {
         }
     };
 
-    const handleProfile = () => {
+    const handleOpenProfile = () => {
         if (!user) return;
         navigate(`/profile/${user.uid}`);
     };
@@ -83,12 +89,14 @@ function UserAvatar() {
                 onClose={handleCloseUserMenu}
                 {...menuProps}
             >
-                <MenuItem onClick={handleProfile}>
-                    {translate("Seu perfil")}
+                <MenuItem onClick={handleOpenProfile}>
+                    {translate(isAuthUser ? "Seu perfil" : "Perfil")}
                 </MenuItem>
-                <MenuItem onClick={handleLogout}>
-                    {translate("Sair da conta")}
-                </MenuItem>
+                {isAuthUser && (
+                    <MenuItem onClick={handleLogout}>
+                        {translate("Sair da conta")}
+                    </MenuItem>
+                )}
             </Menu>
         </>
     );
@@ -96,3 +104,4 @@ function UserAvatar() {
 
 export default UserAvatar;
 export { UserAvatar };
+export type { UserAvatarProps };

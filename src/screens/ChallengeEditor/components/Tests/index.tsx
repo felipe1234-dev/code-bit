@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { useEditor } from "../../providers";
 import { CodeEditor } from "components";
@@ -9,16 +9,7 @@ import styles from "./styles.module.scss";
 function Tests() {
     const { challenge, updateChallenge } = useEditor();
     const { translate } = useI18n();
-    const [code, setCode] = useState(
-        `function runTests() {
-    const tests = [
-        // ${translate("Coloque os testes aqui. Ex: soma(1, 1) === 2")}
-        ${challenge.tests.join(",\n")}
-    ];
-
-    return tests.every(Boolean);
-}`
-    );
+    const [code, setCode] = useState("");
 
     const handleCodeChange = (value: string) => {
         setCode(value);
@@ -36,6 +27,23 @@ function Tests() {
 
         updateChallenge({ tests });
     };
+
+    useEffect(() => {
+        if (challenge.tests.length > 0) {
+            setCode(`const tests = [
+    ${
+        challenge.tests.length === 0
+            ? `
+    // ${translate("Coloque os testes aqui. Ex: soma(1, 1) === 2")}
+    // ${translate("Não crie variáveis externas")}
+    // ${translate(
+        "Essa array será utilizada para testar a solução dos participantes"
+    )}`
+            : challenge.tests.join(",\n")
+    }
+];`);
+        }
+    }, [challenge.uid]);
 
     return (
         <div className={styles.Tests}>

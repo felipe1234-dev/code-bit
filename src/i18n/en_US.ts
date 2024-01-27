@@ -60,6 +60,16 @@ const en_US = {
     "Nenhuma opção": "No options",
     "Coloque os testes aqui. Ex: soma(1, 1) === 2":
         "Put the tests here. E.g. sum(1, 1) === 2",
+    "Dê um nome à função e provenha os argumentos":
+        "Give the function a name and provide the arguments",
+    "Não escreva a solução do desafio aqui":
+        "Don't write the challenge solution here",
+    "Mude apenas as linhas dentro desta array. Não crie variáveis externas":
+        "Only change the lines inside this array. Don't create external variables",
+    "Essa array será utilizada para testar a solução dos participantes":
+        "This array will be used to test the participants' solution",
+    "Agora, resolva o seu próprio desafio!": "Now, solve your own challenge!",
+    "Rodar testes": "Run tests",
     [codes.auth.unknownError]: "Unknown error",
     [codes.auth.emailAlreadyTaken]: "Email already taken",
     [codes.auth.unauthenticated]: "Unauthenticated",

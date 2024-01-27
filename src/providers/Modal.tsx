@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { ModalProps } from "../components/Modal";
+import { Optional } from "types";
 
-type ModalOptions = ModalProps;
+type ModalOptions = Optional<ModalProps, "visible">;
 
 interface ModalValue {
     modalProps: ModalProps;
