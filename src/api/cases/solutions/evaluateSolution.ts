@@ -15,7 +15,7 @@ async function evaluateSolution(solution: Solution, challenge: Challenge) {
 
     const solved = results.every(Boolean);
     const score =
-        solved || solution.unblockedSolutions
+        solved && !solution.unblockedSolutions
             ? await calculateChallengeScore(challenge)
             : 0;
 
