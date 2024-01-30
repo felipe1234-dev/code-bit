@@ -6,3 +6,4 @@ export * from "./TextEditor";
 export * from "./CodeEditor";
 export * from "./Resizable";
 export * from "./Modal";
+export * from "./CategorySelector";

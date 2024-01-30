@@ -1,0 +1,29 @@
+@import "assets/styles/colors";
+
+.CategorySelector {
+    min-width: 200px;
+
+    fieldset {
+        border: none;
+    }
+
+    &::before,
+    &::after,
+    > div::before,
+    > div::after {
+        display: none !important;
+    }
+
+    input {
+        color: $medium-blue !important;
+        padding: 15px 10px !important;
+        min-width: 100px !important;
+        font-size: 18px;
+        padding-left: 2px !important;
+    }
+
+    &Chip {
+        background-color: $dark-blue !important;
+        color: $light-text !important;
+    }
+}
