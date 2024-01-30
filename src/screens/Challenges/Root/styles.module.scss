@@ -1,0 +1,10 @@
+@import "assets/styles/variables";
+
+.Root {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    height: calc(100vh - #{$app-header-height});
+}

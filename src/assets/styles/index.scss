@@ -77,7 +77,12 @@ code {
 }
 
 .MuiOutlinedInput-root {
+    &,
     input {
         color: $medium-blue !important;
+    }
+
+    svg {
+        color: $light-text !important;
     }
 }
