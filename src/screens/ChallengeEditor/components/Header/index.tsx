@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
 
+import * as Api from "api";
 import { format } from "i18n";
 import { useEditor } from "../../providers";
-import {
-    useI18n,
-    useLoader,
-    useModal,
-    useNavigation,
-    useToast,
-} from "providers";
-import * as Api from "api";
+import { useI18n, useLoader, useNavigation, useToast } from "providers";
 
 import CreatorSolution from "../CreatorSolution";
 
