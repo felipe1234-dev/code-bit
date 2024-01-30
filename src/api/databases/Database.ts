@@ -1,17 +1,6 @@
 import firebase from "firebase/compat";
 import { firestore } from "api/utils/services";
-
-type Operator =
-    | "<"
-    | "<="
-    | "=="
-    | "!="
-    | ">="
-    | ">"
-    | "array-contains"
-    | "in"
-    | "not-in"
-    | "array-contains-any";
+import { Operator, Direction } from "api/types";
 
 class Database<T> {
     protected _index: number;
@@ -22,7 +11,7 @@ class Database<T> {
     >[];
     protected _startAfter: string[];
     protected _limit?: number;
-    protected _orders: Array<[field: keyof T, direction: "asc" | "desc"]>;
+    protected _orders: Array<[field: keyof T, direction: Direction]>;
 
     constructor(dbName: string) {
         this._index = 0;
@@ -87,7 +76,7 @@ class Database<T> {
         return this;
     }
 
-    public orderBy(field: keyof T, direction: "asc" | "desc") {
+    public orderBy(field: keyof T, direction: Direction) {
         this._orders.push([field, direction]);
         return this;
     }
