@@ -1,6 +1,8 @@
 @import "assets/styles/colors";
 @import "assets/styles/variables";
 
+$radius: 50px;
+
 .Login {
     display: flex;
     flex-direction: column;
@@ -11,8 +13,6 @@
     height: calc(100vh - #{$app-header-height});
 
     &Icon {
-        $radius: 50px;
-
         display: flex;
         align-items: center;
         justify-content: center;
@@ -21,8 +21,8 @@
         height: $radius;
         pointer-events: none;
         background-color: $medium-blue;
-        border-radius: 50%;
-        padding: 10px;
+        border-radius: $radius-round;
+        padding: $spacing-sm;
 
         svg {
             font-size: calc(#{$radius}* 0.8);
@@ -35,21 +35,22 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        font-size: calc(10px + 2vmin);
-        color: $light-text;
+        gap: $spacing-md;
 
         p {
+            color: $light-text;
+            font-size: $font-md;
             width: 100vmin;
             word-break: break-word;
         }
     }
-    
+
     &Form {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        gap: 12px;
+        gap: $spacing-md;
         width: Max(370px, 55vmin);
     }
 }

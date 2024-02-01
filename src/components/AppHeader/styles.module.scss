@@ -2,7 +2,8 @@
 @import "assets/styles/colors";
 @import "assets/styles/animations";
 
-$padding: 10px;
+$logo-width: 3rem;
+$logo-height: 3rem;
 
 .AppHeader {
     display: flex;
@@ -13,14 +14,14 @@ $padding: 10px;
     position: sticky;
     top: 0;
     left: 0;
-    width: calc(100% - 2 *#{$padding});
+    width: calc(100% - 2 *#{$spacing-md});
     height: fit-content;
-    max-height: calc(#{$app-header-height} - 2 *#{$padding});
-    padding: $padding;
+    max-height: calc(#{$app-header-height} - 2 *#{$spacing-md});
+    padding: $spacing-md;
     z-index: 10;
 
     &[data-shadow="true"] {
-        box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+        box-shadow: rgba(0, 0, 0, 0.15) 0 0.5rem 1rem 0;
     }
 
     &,
@@ -29,9 +30,6 @@ $padding: 10px;
     }
 
     &Logo {
-        $logo-width: 50px;
-        $logo-height: 50px;
-
         width: $logo-width;
         height: $logo-height;
         margin: 0;
@@ -58,12 +56,12 @@ $padding: 10px;
     }
 
     &Search {
-        margin-left: 8px !important;
+        margin-left: $spacing-sm !important;
         flex: 1;
 
         &Input {
             background-color: $light-dark !important;
-            border-radius: 30px !important;
+            border-radius: $radius-sm !important;
 
             &::before,
             &::after {
@@ -72,10 +70,10 @@ $padding: 10px;
 
             input {
                 color: $light-text !important;
-                padding-top: 10px !important;
+                padding-top: $spacing-sm !important;
                 padding-left: 0 !important;
-                padding-right: 15px !important;
-                padding-bottom: 10px !important;
+                padding-right: $spacing-md !important;
+                padding-bottom: $spacing-sm !important;
             }
         }
 
@@ -90,7 +88,7 @@ $padding: 10px;
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 8px;
+        gap: $spacing-sm;
         flex: 1;
     }
 

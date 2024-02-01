@@ -2,6 +2,7 @@
 @import "assets/styles/variables";
 
 $radius: 60px;
+$default-padding: $spacing-sm;
 
 .Register {
     display: flex;
@@ -13,21 +14,19 @@ $radius: 60px;
     height: calc(100vh - #{$app-header-height});
 
     &Icon {
-        $padding: 10px;
-
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        width: calc(#{$radius} - 2 *#{$padding});
-        height: calc(#{$radius} - 2 *#{$padding});
+        width: calc(#{$radius} - 2 *#{$default-padding});
+        height: calc(#{$radius} - 2 *#{$default-padding});
         pointer-events: none;
         background-color: $medium-blue;
-        border-radius: 50%;
-        padding: 10px;
+        border-radius: $radius-round;
+        padding: $default-padding;
 
         svg {
-            font-size: calc((#{$radius} - 2 *#{$padding}) * 0.8);
+            font-size: calc((#{$radius} - 2 *#{$default-padding}) * 0.8);
             color: $light-text;
         }
     }
@@ -47,10 +46,11 @@ $radius: 60px;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        font-size: calc(10px + 2vmin);
-        color: $light-text;
+        gap: $spacing-lg;
 
         p {
+            font-size: $font-md;
+            color: $light-text;
             width: 100vmin;
             word-break: break-word;
         }
@@ -61,7 +61,7 @@ $radius: 60px;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        gap: 12px;
+        gap: $spacing-md;
         width: Max(370px, 55vmin);
 
         &Row {
@@ -69,7 +69,7 @@ $radius: 60px;
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: $spacing-md;
             width: 100%;
         }
     }

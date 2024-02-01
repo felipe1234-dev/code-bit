@@ -1,4 +1,5 @@
 @import "assets/styles/colors";
+@import "assets/styles/variables";
 
 .CategorySelector {
     min-width: 200px;
@@ -16,10 +17,10 @@
 
     input {
         color: $medium-blue !important;
-        padding: 15px 10px !important;
+        padding: $spacing-md $spacing-sm !important;
         min-width: 100px !important;
-        font-size: 18px;
-        padding-left: 2px !important;
+        font-size: $font-md;
+        padding-left: $spacing-xs !important;
     }
 
     &Chip {
