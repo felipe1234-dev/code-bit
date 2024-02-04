@@ -1,12 +1,13 @@
 import { Button } from "@mui/material";
 
 import { appName } from "constants/app";
-import { useI18n, useNavigation } from "providers";
+import { useI18n } from "providers";
+import useWelcome from "./useWelcome";
 
 import styles from "./styles.module.scss";
 
 function Welcome() {
-    const { navigate } = useNavigation();
+    const { handleGoToChallenges, handleGoToRandomChallenge } = useWelcome();
     const { translate } = useI18n();
 
     return (
@@ -22,13 +23,13 @@ function Welcome() {
             <div className={styles.WelcomeFooter}>
                 <Button
                     variant="outlined"
-                    onClick={() => navigate("/challenges")}
+                    onClick={handleGoToChallenges}
                 >
                     {translate("Explorar os desafios")}
                 </Button>
                 <Button
                     variant="outlined"
-                    onClick={() => navigate("/challenges/random")}
+                    onClick={handleGoToRandomChallenge}
                 >
                     {translate("Desafio aleatório")}
                 </Button>
