@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
     TextField,
     Autocomplete,
@@ -7,10 +7,10 @@ import {
     AutocompleteRenderGetTagProps,
 } from "@mui/material";
 
-import * as Api from "api";
-import { useAsyncEffect } from "hooks";
 import { onEnterPress } from "utils/functions";
 import { useI18n } from "providers";
+
+import useCategorySelector from "./useCategorySelector";
 
 import styles from "./styles.module.scss";
 
@@ -21,28 +21,15 @@ interface CategorySelectorProps {
 }
 
 function CategorySelector(props: CategorySelectorProps) {
-    const { createCategoryOnEnter = false, onChange, value } = props;
-    const [categories, setCategories] = useState<string[]>([]);
-    const [newCategory, setNewCategory] = useState("");
+    const { value } = props;
+    const {
+        handleAddCategory,
+        handleUpdateCategories,
+        setNewCategory,
+        categories,
+    } = useCategorySelector(props);
+
     const { translate } = useI18n();
-
-    const handleAddCategory = () => {
-        const categoryExists = categories.includes(newCategory);
-        if (!createCategoryOnEnter && !categoryExists) {
-            return;
-        }
-
-        const newCategories = Array.from(new Set([...categories, newCategory]));
-
-        setCategories(newCategories);
-        onChange(newCategories);
-
-        setNewCategory("");
-    };
-
-    const handleUpdateCategories = (_: any, newValue: string[]) => {
-        onChange(Array.from(new Set([...newValue])));
-    };
 
     const renderInput = (props: AutocompleteRenderInputParams) => (
         <TextField
@@ -73,11 +60,6 @@ function CategorySelector(props: CategorySelectorProps) {
                 />
             );
         });
-
-    useAsyncEffect(async () => {
-        const categories = await Api.cases.challenges.listCategories();
-        setCategories(categories);
-    }, []);
 
     return (
         <Autocomplete

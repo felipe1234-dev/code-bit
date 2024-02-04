@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import MonacoEditor from "@monaco-editor/react";
+import useCodeEditor from "./useCodeEditor";
 import styles from "./styles.module.scss";
 
 interface CodeEditorProps {
@@ -10,17 +11,14 @@ interface CodeEditorProps {
 }
 
 function CodeEditor(props: CodeEditorProps) {
-    const { theme = "dark", language = "javascript", onChange, value } = props;
-
-    const handleChangeValue = (value?: string) => {
-        onChange(value || "");
-    };
+    const { language = "javascript", value } = props;
+    const { handleChangeValue, theme } = useCodeEditor(props);
 
     return (
         <div className={styles.CodeEditor}>
             <MonacoEditor
                 className={styles.CodeEditorContainer}
-                theme={theme === "dark" ? "vs-dark" : theme}
+                theme={theme}
                 language={language}
                 onChange={handleChangeValue}
                 value={value}
@@ -31,3 +29,4 @@ function CodeEditor(props: CodeEditorProps) {
 
 export default CodeEditor;
 export { CodeEditor };
+export type { CodeEditorProps };

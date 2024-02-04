@@ -1,22 +1,11 @@
-import { useState, useMemo } from "react";
 import { IconButton, Menu, MenuItem, Avatar } from "@mui/material";
 
-import { useAuth, useI18n, useLoader, useNavigation } from "providers";
-import { getNameInitials } from "utils/functions";
+import { useI18n } from "providers";
 import { User } from "api/models";
 
-import styles from "./styles.module.scss";
+import useUserAvatar from "./useUserAvatar";
 
-const menuProps = {
-    anchorOrigin: {
-        vertical: "bottom" as "bottom",
-        horizontal: "left" as "left",
-    },
-    transformOrigin: {
-        vertical: "top" as "top",
-        horizontal: "left" as "left",
-    },
-};
+import styles from "./styles.module.scss";
 
 interface UserAvatarProps {
     user: User;
@@ -24,49 +13,19 @@ interface UserAvatarProps {
 
 function UserAvatar(props: UserAvatarProps) {
     const { user } = props;
-    const { user: authUser, logout } = useAuth();
+    const {
+        menuProps,
+        nameInitials,
+        userMenuOpen,
+        userAnchorEl,
+        isAuthUser,
+        handleOpenUserMenu,
+        handleCloseUserMenu,
+        handleOpenProfile,
+        handleLogout,
+    } = useUserAvatar(props);
+
     const { translate } = useI18n();
-    const { navigate } = useNavigation();
-    const loader = useLoader();
-
-    const [userAnchorEl, setUserAnchorEl] = useState<HTMLButtonElement | null>(
-        null
-    );
-
-    const isAuthUser = user.uid === authUser?.uid;
-    const userMenuOpen = Boolean(userAnchorEl);
-
-    const handleOpenUserMenu = (evt: React.MouseEvent<HTMLButtonElement>) => {
-        setUserAnchorEl(evt.currentTarget);
-    };
-
-    const handleCloseUserMenu = () => {
-        setUserAnchorEl(null);
-    };
-
-    const handleLogout = async () => {
-        loader.show();
-
-        try {
-            handleCloseUserMenu();
-            await logout();
-            navigate("/");
-        } finally {
-            loader.hide();
-        }
-    };
-
-    const handleOpenProfile = () => {
-        if (!user) return;
-        navigate(`/profile/${user.uid}`);
-    };
-
-    const nameInitials = useMemo(() => {
-        if (!user) return "";
-        return getNameInitials(user.fullName);
-    }, [user]);
-
-    if (!user) return <></>;
 
     return (
         <>

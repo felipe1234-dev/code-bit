@@ -1,32 +1,14 @@
-import { useState } from "react";
 import { TextField, Button } from "@mui/material";
 import { LockOutlined as LockOutlinedIcon } from "@mui/icons-material";
-import { useAuth, useI18n, useLoader, useNavigation, useToast } from "providers";
+
+import { useI18n } from "providers";
+import useLogin from "./useLogin";
+
 import styles from "./styles.module.scss";
 
 function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
-    const { navigate } = useNavigation();
-    const { login } = useAuth();
+    const { email, setEmail, password, setPassword, handleLogin } = useLogin();
     const { translate } = useI18n();
-    const loader = useLoader();
-    const toast = useToast();
-
-    const handleLogin = async () => {
-        loader.show();
-
-        try {
-            await login(email, password);
-            navigate("/");
-        } catch (err) {
-            const error = err as Error;
-            toast.error(error.message);
-        } finally {
-            loader.hide();
-        }
-    };
 
     return (
         <div className={styles.Login}>
@@ -44,7 +26,7 @@ function Login() {
                         type="email"
                         label={translate("Endereço de Email")}
                         placeholder={translate("exemplo@gmail.com")}
-                        onChange={evt => setEmail(evt.target.value)}
+                        onChange={(evt) => setEmail(evt.target.value)}
                         value={email}
                     />
                     <TextField
@@ -53,10 +35,13 @@ function Login() {
                         type="password"
                         label={translate("Senha")}
                         placeholder={translate("senha123")}
-                        onChange={evt => setPassword(evt.target.value)}
+                        onChange={(evt) => setPassword(evt.target.value)}
                         value={password}
                     />
-                    <Button fullWidth onClick={handleLogin}>
+                    <Button
+                        fullWidth
+                        onClick={handleLogin}
+                    >
                         {translate("Entrar")}
                     </Button>
                 </div>

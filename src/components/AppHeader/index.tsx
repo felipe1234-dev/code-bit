@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
-import { Button, InputAdornment, TextField } from "@mui/material";
-import { Search as SearchIcon } from "@mui/icons-material";
+import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
+import {
+    Search as SearchIcon,
+    HomeRounded as HomeIcon,
+} from "@mui/icons-material";
 
-import { appName } from "constants/app";
-import { useAuth, useI18n, useNavigation } from "providers";
-import logo from "assets/images/logo.svg";
+import { appName, logo } from "constants/app";
+import { useAuth, useI18n } from "providers";
+import useAppHeader from "./useAppHeader";
 
 import LanguageSelector from "components/LanguageSelector";
 import UserAvatar from "components/UserAvatar";
@@ -12,33 +14,30 @@ import UserAvatar from "components/UserAvatar";
 import styles from "./styles.module.scss";
 
 function AppHeader() {
-    const [searchEl, setSearchEl] = useState<HTMLDivElement | null>(null);
     const { user } = useAuth();
     const { translate } = useI18n();
-    const { navigate, currentRoute } = useNavigation();
-
-    useEffect(() => {
-        if (!searchEl) return;
-
-        const input = searchEl.querySelector("input");
-        if (!input) return;
-
-        window.addEventListener("keydown", (evt) => {
-            if (evt.ctrlKey && evt.key === "/") {
-                input.focus();
-            }
-        });
-    }, [searchEl]);
+    const {
+        setSearchEl,
+        showCreateButton,
+        showLoginButton,
+        showRegisterButton,
+        showHomeButton,
+        showShadow,
+        handleGoToHome,
+        handleGoToEditor,
+        handleGoToLogin,
+        handleGoToRegister,
+    } = useAppHeader();
 
     return (
         <header
             className={styles.AppHeader}
-            data-shadow={!currentRoute?.hideHeaderShadow}
+            data-shadow={showShadow}
         >
             <div className={styles.AppHeaderLeft}>
                 <div
                     className={styles.AppHeaderLogo}
-                    onClick={() => navigate("/")}
+                    onClick={handleGoToHome}
                 >
                     <img
                         src={logo}
@@ -47,7 +46,7 @@ function AppHeader() {
                 </div>
                 <span
                     className={styles.AppHeaderName}
-                    onClick={() => navigate("/")}
+                    onClick={handleGoToHome}
                 >
                     {appName}
                 </span>
@@ -70,10 +69,10 @@ function AppHeader() {
                 />
             </div>
             <div className={styles.AppHeaderRight}>
-                {user?.uid && currentRoute?.key !== "editor" && (
+                {showCreateButton && (
                     <Button
                         variant="outlined"
-                        onClick={() => navigate("/editor")}
+                        onClick={handleGoToEditor}
                     >
                         {translate("Criar")}
                     </Button>
@@ -81,24 +80,28 @@ function AppHeader() {
 
                 <LanguageSelector />
 
-                {!user?.uid ? (
-                    <>
-                        <Button
-                            variant="outlined"
-                            onClick={() => navigate("/login")}
-                        >
-                            {translate("Entrar")}
-                        </Button>
-                        <Button
-                            variant="outlined"
-                            onClick={() => navigate("/register")}
-                        >
-                            {translate("Cadastrar")}
-                        </Button>
-                    </>
-                ) : (
-                    <UserAvatar user={user} />
+                {showLoginButton && (
+                    <Button
+                        variant="outlined"
+                        onClick={handleGoToLogin}
+                    >
+                        {translate("Entrar")}
+                    </Button>
                 )}
+                {showRegisterButton && (
+                    <Button
+                        variant="outlined"
+                        onClick={handleGoToRegister}
+                    >
+                        {translate("Cadastrar")}
+                    </Button>
+                )}
+                {showHomeButton && (
+                    <IconButton onClick={handleGoToHome}>
+                        <HomeIcon />
+                    </IconButton>
+                )}
+                {user && <UserAvatar user={user} />}
             </div>
         </header>
     );
