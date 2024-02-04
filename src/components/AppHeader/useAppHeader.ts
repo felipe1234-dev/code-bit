@@ -1,6 +1,5 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useAuth, useNavigation } from "providers";
-import { User } from "api/models";
 
 function useAppHeader() {
     const [searchEl, setSearchEl] = useState<HTMLDivElement | null>(null);

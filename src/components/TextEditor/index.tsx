@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import RichTextEditor, { EditorValue, ToolbarConfig } from "react-rte";
-import { useI18n } from "providers";
+import React from "react";
+import RichTextEditor from "react-rte";
 import useTextEditor from "./useTextEditor";
 import styles from "./styles.module.scss";
 

@@ -1,8 +1,3 @@
-import { useState } from "react";
-
-import * as Api from "api";
-import { useAsyncEffect } from "hooks";
-
 import { CodeEditorProps } from "./index";
 
 function useCodeEditor(props: CodeEditorProps) {
