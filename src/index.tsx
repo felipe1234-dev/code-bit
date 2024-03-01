@@ -6,6 +6,7 @@ import { Composer } from "components";
 import {
     I18nProvider,
     NavigationProvider,
+    CacheProvider,
     ToastProvider,
     ModalProvider,
     LoaderProvider,
@@ -26,6 +27,7 @@ const providers = [
     BrowserRouter,
     I18nProvider,
     NavigationProvider,
+    CacheProvider,
     ToastProvider,
     ModalProvider,
     LoaderProvider,
