@@ -16,7 +16,7 @@
     }
 
     input {
-        color: $medium-blue !important;
+        color: $blue-50 !important;
         padding: $spacing-md $spacing-sm !important;
         min-width: 100px !important;
         font-size: $font-md;
@@ -24,7 +24,7 @@
     }
 
     &Chip {
-        background-color: $dark-blue !important;
+        background-color: $blue-80 !important;
         color: $light-text !important;
     }
 }

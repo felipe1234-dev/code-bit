@@ -21,7 +21,7 @@ $default-padding: $spacing-sm;
         width: calc(#{$radius} - 2 *#{$default-padding});
         height: calc(#{$radius} - 2 *#{$default-padding});
         pointer-events: none;
-        background-color: $medium-blue;
+        background-color: $blue-50;
         border-radius: $radius-round;
         padding: $default-padding;
 

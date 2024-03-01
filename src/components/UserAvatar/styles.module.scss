@@ -9,11 +9,11 @@ $avatar-radius: $radius-xl * 2;
     align-items: center;
     justify-content: flex-start;
     gap: $spacing-sm;
-    
+
     border-radius: $radius-xl !important;
     border-top-left-radius: $radius-round !important;
     border-bottom-left-radius: $radius-round !important;
-    background-color: $dark-dark !important;
+    background-color: $dark-60 !important;
     color: $light-text !important;
     padding: 0 $spacing-sm 0 0 !important;
     font-size: $font-sm !important;

@@ -23,7 +23,7 @@ $default-spacing: $spacing-lg;
         h1 {
             font-size: $font-xl;
             font-weight: $font-bold;
-            color: $medium-blue;
+            color: $blue-50;
         }
 
         p {
@@ -43,6 +43,6 @@ $default-spacing: $spacing-lg;
     }
 
     &Link {
-        color: $medium-blue;
+        color: $blue-50;
     }
 }

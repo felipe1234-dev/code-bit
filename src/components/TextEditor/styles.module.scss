@@ -25,7 +25,7 @@ $spacing: 35px;
 
         blockquote {
             $radius: 5px;
-            border-left: 5px solid $dark-blue;
+            border-left: 5px solid $blue-80;
             color: $white;
             font-family: Hoefler Text, Georgia, serif;
             font-style: italic;
@@ -43,7 +43,7 @@ $spacing: 35px;
         h4,
         h5,
         h6 {
-            color: $medium-blue;
+            color: $blue-50;
             font-weight: 500;
         }
     }
@@ -90,7 +90,7 @@ $spacing: 35px;
             }
 
             &[aria-checked="true"] {
-                background-color: $dark-blue;
+                background-color: $blue-80;
                 border-radius: 5px;
 
                 span {

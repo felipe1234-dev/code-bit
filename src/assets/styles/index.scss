@@ -7,7 +7,7 @@ body {
         "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: $medium-dark;
+    background-color: $dark-50;
 }
 
 code {
@@ -23,17 +23,17 @@ code {
 
     /* Track */
     &::-webkit-scrollbar-track {
-        background-color: $light-dark;
+        background-color: $dark-40;
     }
 
     /* Handle */
     &::-webkit-scrollbar-thumb {
-        background-color: $medium-blue;
+        background-color: $blue-50;
     }
 
     /* Handle on hover */
     &::-webkit-scrollbar-thumb:hover {
-        background-color: $dark-blue;
+        background-color: $blue-80;
     }
 }
 
@@ -46,8 +46,8 @@ code {
     color: $light-text !important;
 
     &:hover {
-        border-color: $medium-blue !important;
-        color: $medium-blue !important;
+        border-color: $blue-50 !important;
+        color: $blue-50 !important;
     }
 }
 
@@ -58,7 +58,7 @@ code {
 
     &:hover svg,
     svg:hover {
-        color: $medium-blue !important;
+        color: $blue-50 !important;
     }
 
     &:hover {
@@ -68,18 +68,18 @@ code {
 
 .MuiTextField-root {
     label {
-        color: $medium-blue !important;
+        color: $blue-50 !important;
     }
 
     fieldset {
-        border-color: $light-dark !important;
+        border-color: $dark-40 !important;
     }
 }
 
 .MuiOutlinedInput-root {
     &,
     input {
-        color: $medium-blue !important;
+        color: $blue-50 !important;
     }
 
     svg {
